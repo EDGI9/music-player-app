@@ -12,7 +12,7 @@ function ArtistSidePanel(props) {
     }
 
     return (
-        <aside className={"c-artist-side-panel h-full sm:w-full md:w-1/3 absolute top-0 max-w-md bg-white drop-shadow-md z-[1] transform duration-500 " + (props.show ? "right-0":"-right-1/3")}>
+        <aside className={"c-artist-side-panel h-full  absolute top-0 max-w-md bg-white drop-shadow-md z-[1] transform duration-500 " + (props.show ? " right-0 sm:w-full md:w-1/3" : " -right-full invisible")}>
             <button className="c-artist-side-panel__button" onClick={hideSidePanel}> <ChevronRightIcon/></button>
             <div className="h-30">
                 <img className="c-artist-side-panel__image" src={props.artistInfo.image}></img>

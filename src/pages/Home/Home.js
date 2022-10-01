@@ -31,8 +31,8 @@ function Home() {
   
 
   return (
-      <main className="relative overflow-hidden">
-        <section className="grid grid-cols-6 gap-4">
+      <main className="relative overflow-hidden h-full">
+        <section className="grid grid-cols-6 gap-4 h-full content-center">
           <div className="col-start-2 col-span-4 grid grid-rows-3">
             <div className="grid justify-center content-center">
               <BigImage image={playlist.currentTrack.albumImage}></BigImage>
