@@ -48,7 +48,6 @@ function Controlls(props) {
     return (
         <div className="c-controlls">
             <button className="c-controlls__shuffle" onClick={muteUnmute}>
-                {/* Add click event */}
                 {muteUnmuteIcon}
             </button>
             <button className="c-controlls__previous" onClick={previousTrack}>

@@ -36,6 +36,6 @@ const playerSlice = createSlice({
   }
 })
 
-export const { SET_PLAYLIST, NEXT, PREVIOUS, PLAY, PAUSE, MUTE, UNMUTE } = playerSlice.actions
+export const { NEXT, PREVIOUS, PLAY, PAUSE, MUTE, UNMUTE } = playerSlice.actions
 
 export default playerSlice.reducer

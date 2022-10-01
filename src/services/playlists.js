@@ -5,6 +5,7 @@ function HANDLE_PLAYLIST_TRACKS(playlist) {
   playlist.forEach(item => {
     const trackData = {
       artistName: item.track.artists[0].name,
+      artistId: item.track.artists[0].id,
       albumImage: item.track.album.images[0].url,
       trackName: item.track.name,
       src: item.track.preview_url,
