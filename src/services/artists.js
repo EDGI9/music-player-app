@@ -8,20 +8,22 @@ function HANDLE_ARTIST_INFO(artist) {
   }
 
 async function GET_ARTIST_INFO (accessToken, id) {
-    let response = []
-    await axios(`https://api.spotify.com/v1/artists/${id}`, {
+    let response = {}
+    if (accessToken !== undefined && id !== undefined) {
+      await axios(`https://api.spotify.com/v1/artists/${id}`, {
         headers :{
-        'Content-Type':'application/json',
-        'Accept':'application/json',
-        'Authorization': 'Bearer '+ accessToken,
+          'Content-Type':'application/json',
+          'Accept':'application/json',
+          'Authorization': 'Bearer '+ accessToken,
         },
-      method: 'GET',
-    }).then(res => {
-        response = HANDLE_ARTIST_INFO(res.data)
-    }).catch(error => {
-      console.error(error);
-    }) 
-
+        method: 'GET',
+      }).then(res => {
+          response = HANDLE_ARTIST_INFO(res.data)
+      }).catch(error => {
+        console.error(error);
+      }) 
+  
+    }
     return response
 }
 
