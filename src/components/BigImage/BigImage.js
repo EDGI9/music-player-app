@@ -1,4 +1,5 @@
 import "./BigImage.scss";
+import Button from "../../components/Button/Button.js";
 import { useDispatch  } from 'react-redux'
 
 
@@ -11,7 +12,7 @@ function BigImage(props) {
     return (
         <div className="c-big-image">
             <img className="c-big-image__background" src={props.image}></img>
-            <button className="c-big-image__button" onClick={shoSidePanel}>More</button>
+            <Button onClick={shoSidePanel} className="c-big-image__button">More</Button>
         </div>
     )
 }

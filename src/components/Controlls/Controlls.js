@@ -1,4 +1,5 @@
 import "./Controlls.scss";
+import Button from "../../components/Button/Button.js";
 import { useSelector, useDispatch  } from 'react-redux'
 import { PlayIcon, PauseIcon, ChevronDoubleRightIcon, ChevronDoubleLeftIcon, ArrowPathRoundedSquareIcon, ArrowsRightLeftIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
 
@@ -53,9 +54,7 @@ function Controlls(props) {
             <button className="c-controlls__previous" onClick={previousTrack}>
                 <ChevronDoubleLeftIcon className="c-controlls__previous__icon"/>
             </button>
-            <button className="c-controlls__play" onClick={playPause}>
-                { playPauseIcon }
-            </button>
+            <Button onClick={playPause} className="c-controlls__play">{ playPauseIcon }</Button>
             <button className="c-controlls__next" onClick={nextTrack}>
                 <ChevronDoubleRightIcon className="c-controlls__next__icon" />
             </button>

@@ -1,4 +1,5 @@
 import "./ArtistSidePanel.scss";
+import Button from "../../components/Button/Button.js";
 import { useDispatch  } from 'react-redux'
 import { ChevronRightIcon, SparklesIcon, UserGroupIcon } from '@heroicons/react/24/solid'
 
@@ -12,9 +13,9 @@ function ArtistSidePanel(props) {
     }
 
     return (
-        <aside className={"c-artist-side-panel h-full absolute top-0 max-w-md bg-white drop-shadow-md z-[1] transform duration-500 " + (props.show ? " right-0 sm:w-full md:w-1/3" : " -right-full invisible")}>
-            <button className="c-artist-side-panel__button" onClick={hideSidePanel}> <ChevronRightIcon/></button>
-            <div className="h-30">
+        <aside className={"c-artist-side-panel h-full absolute top-0 max-w-md bg-white drop-shadow-md z-[1] transform duration-700 " + (props.show ? " right-0 sm:w-full md:w-1/3" : " -right-full invisible")}>
+            <Button onClick={hideSidePanel} className="absolute ml-5 mt-5 rounded-full p-2"><ChevronRightIcon className="h-5 w-5"/></Button>
+            <div className="h-30 max-h-80 overflow-hidden">
                 <img className="c-artist-side-panel__image" src={props.artistInfo.image}></img>
             </div>
             <div className="h-70 p-5 ">
