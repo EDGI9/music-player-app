@@ -1,4 +1,5 @@
 import "./ArtistSidePanel.scss";
+import Tag from "../../components/Tag/Tag.js";
 import Button from "../../components/Button/Button.js";
 import { useDispatch  } from 'react-redux'
 import { ChevronRightIcon, SparklesIcon, UserGroupIcon } from '@heroicons/react/24/solid'
@@ -6,7 +7,6 @@ import { ChevronRightIcon, SparklesIcon, UserGroupIcon } from '@heroicons/react/
 
 function ArtistSidePanel(props) {
     const dispatch = useDispatch()
-    console.log(props);
     
     const hideSidePanel = () => {
         dispatch({ type: 'global/SET_SIDE_PANEL_VISIBILITY', payload: false})
@@ -22,21 +22,27 @@ function ArtistSidePanel(props) {
                 <h1 className="mb-5 font-bold text-2xl">{props.artistInfo.name}</h1>
                 <div className="mb-5">
                     <h3 className="text-sm mb-2">Popularity</h3>
-                    <span className="c-artist-side-panel__tag flex w-auto"><SparklesIcon className="h-6 w-6 mr-2"/> {props.artistInfo.popularity} </span> 
+                    <Tag>
+                        <SparklesIcon className="h-5 w-5 mr-2"/>
+                        <span>{props.artistInfo.popularity}</span>
+                    </Tag>
+                </div>
+                <div className="mb-5">
+                    <h3 className="text-sm mb-2">Followers</h3>
+                    <Tag>
+                        <UserGroupIcon className="h-5 w-5 mr-2"/>
+                        <span>{props.artistInfo.total}</span>
+                    </Tag>
                 </div>
                 <div className="mb-5">
                     <h3 className="text-sm mb-2">Genres</h3>
                     <ul className="flex flex-row flex-wrap gap-2">
                         {props.artistInfo.genres?.map(listitem => 
                             (
-                                <li key={listitem} className="c-artist-side-panel__tag" >{listitem}</li>
+                                <li key={listitem}><Tag>{listitem}</Tag></li>
                             )
                         )}
                     </ul>
-                </div>
-                <div className="mb-5">
-                    <h3 className="text-sm mb-2">Followers</h3>
-                    <span className="c-artist-side-panel__tag flex w-auto"><UserGroupIcon className="h-6 w-6 mr-2"/> {props.artistInfo.total} </span> 
                 </div>
             </div>
         </aside> 

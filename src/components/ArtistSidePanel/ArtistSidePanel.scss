@@ -1,18 +1,6 @@
 @import "../../assets/scss/index.scss";
 
 .c-artist-side-panel {
-    .c-artist-side-panel__button {
-        background-color: $primary;
-        box-shadow: 0px 4px 9px 0px $primary;
-        border-radius: 35px;
-        color: $white;
-        width: 35px;
-        height: 35px;
-        padding: 5px;
-        position: absolute;
-        top: 15px;
-        left: 15px;
-    }
     .c-artist-side-panel__tag {
         background-color: $primary;
         color: $white;

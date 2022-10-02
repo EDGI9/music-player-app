@@ -1,0 +1,11 @@
+@import "../../assets/scss/index.scss";
+
+.c-tag {
+    display: flex;
+    align-items: center;
+    background-color: $primary;
+    padding: 2px 10px;
+    color: $white;
+    border-radius: 15px;
+    width: max-content;
+}
