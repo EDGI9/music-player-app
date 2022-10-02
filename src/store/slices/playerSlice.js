@@ -3,7 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     trackIndex: 0,
     isPlaying: false,
-    isMuted:false
+    isMuted: false,
+    duration: 0,
+    currentTime: 0,
+    progress: 0,
 }
 
 const playerSlice = createSlice({
@@ -32,7 +35,15 @@ const playerSlice = createSlice({
     UNMUTE: state => {
         state.isMuted = false
     },
-    
+    SET_DURATION: (state, action) => {
+        state.duration = action.payload
+    },
+    UPDATE_CURRENT_TIME: (state, action) => {
+        state.currentTime = action.payload
+    },
+    UPDATE_PROGRESS: (state, action) => {
+        state.progress = action.payload
+    },
   }
 })
 

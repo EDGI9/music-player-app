@@ -4,13 +4,15 @@ import BigImage from "../../components/BigImage/BigImage.js";
 import Title from "../../components/Title/Title.js";
 import SubTitle from "../../components/SubTitle/SubTitle.js";
 import ArtistSidePanel from "../../components/ArtistSidePanel/ArtistSidePanel.js";
-import { useEffect, useState } from 'react';
+import ProgressCircle from "../../components/ProgressCircle/ProgressCircle.js";
+import { useEffect } from 'react';
 import { useSelector, useDispatch  } from 'react-redux'
 import { GET_TOKEN } from '../../services/requestToken.js'
 import { GET_TOP_50 } from '../../services/playlists.js'
 
 
 function Home() {
+  const player = useSelector(state => state.player)
   const playlist = useSelector(state => state.playlist)
   const artist = useSelector(state => state.artist)
   const global = useSelector(state => state.global)
@@ -28,14 +30,19 @@ function Home() {
     fecthData()
   }, [])
 
-  
-
   return (
       <main className="relative overflow-hidden h-full">
         <section className="grid grid-cols-6 gap-4 h-full content-center">
           <div className="col-start-2 col-span-4 grid grid-rows-3">
-            <div className="grid justify-center content-center">
-              <BigImage image={playlist.currentTrack.albumImage}></BigImage>
+            <div className="flex justify-center content-center relative">
+              <BigImage image={playlist.currentTrack.albumImage} className="z-[1]"></BigImage>
+              <ProgressCircle
+                className="absolute justify-self-center -top-6"  
+                percentage={player.progress}
+                isPlaying={true}
+                size={290}
+                color="#FF0036"
+              />
             </div>
             <div className="grid justify-center content-center align-center gap-6">
               <Title text={playlist.currentTrack.trackName}></Title>
