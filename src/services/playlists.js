@@ -20,18 +20,20 @@ function HANDLE_PLAYLIST_TRACKS(playlist) {
 
 async function GET_TOP_50 (accessToken) {
     let response = []
-    await axios('https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks', {
-      headers :{
-        'Content-Type':'application/json',
-        'Accept':'application/json',
-        'Authorization': 'Bearer '+ accessToken,
-      },
-      method: 'GET',
-    }).then(res => {
-        response = HANDLE_PLAYLIST_TRACKS(res.data.items)
-    }).catch(error => {
-      console.error(error);
-    }) 
+    if (accessToken !== undefined) {
+      await axios('https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks', {
+        headers :{
+          'Content-Type':'application/json',
+          'Accept':'application/json',
+          'Authorization': 'Bearer '+ accessToken,
+        },
+        method: 'GET',
+      }).then(res => {
+          response = HANDLE_PLAYLIST_TRACKS(res.data.items)
+      }).catch(error => {
+        console.error(error);
+      }) 
+    }
 
     return response
 }
