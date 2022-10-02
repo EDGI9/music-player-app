@@ -10,7 +10,7 @@ function BigImage(props) {
     }
 
     return (
-        <div className="c-big-image">
+        <div className={"c-big-image " + (props.className ? props.className: "" )}>
             <img className="c-big-image__background" src={props.image}></img>
             <Button onClick={shoSidePanel} className="c-big-image__button">More</Button>
         </div>
