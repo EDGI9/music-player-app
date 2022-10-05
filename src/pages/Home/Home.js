@@ -5,6 +5,7 @@ import Title from "../../components/Title/Title.js";
 import SubTitle from "../../components/SubTitle/SubTitle.js";
 import ArtistSidePanel from "../../components/ArtistSidePanel/ArtistSidePanel.js";
 import ProgressCircle from "../../components/ProgressCircle/ProgressCircle.js";
+import WaveAnimation from "../../components/WaveAnimation/WaveAnimation.js";
 import { useEffect } from 'react';
 import { useSelector, useDispatch  } from 'react-redux'
 import { GET_TOKEN } from '../../services/requestToken.js'
@@ -53,8 +54,8 @@ function Home() {
             </div>
           </div>
         </section>
-        
         <ArtistSidePanel show={global.showSidePanel} artistInfo={artist.data}/>
+        <WaveAnimation/>
       </main>
   );
 }

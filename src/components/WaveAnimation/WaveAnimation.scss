@@ -1,0 +1,11 @@
+
+@import "../../assets/scss/index.scss";
+
+.c-wave {
+    margin: auto; 
+    shape-rendering: auto;
+    position: absolute;
+    bottom: 0; 
+    z-index: -1;
+    background-color: rgba($primary, 0.15);
+}
