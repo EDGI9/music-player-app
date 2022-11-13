@@ -18,6 +18,14 @@ function Player(props) {
         }
     };
 
+    //Set duration of track
+    const updateProgress = (currentTime, progress) => {
+        if (player.isPlaying === true) {
+            dispatch({ type: 'player/UPDATE_CURRENT_TIME', payload: currentTime})
+            dispatch({ type: 'player/UPDATE_PROGRESS', payload: progress})
+        }
+    };
+
     //Start timer
     useEffect(() => {
         if (player.isPlaying === true) {
@@ -34,17 +42,26 @@ function Player(props) {
         if (player.isPlaying === true) {
             const currentTime = Math.floor(timer)
             const progress = Math.floor(( timer / player.duration) * 100)
-            dispatch({ type: 'player/UPDATE_CURRENT_TIME', payload: currentTime})
-            dispatch({ type: 'player/UPDATE_PROGRESS', payload: progress})
+            updateProgress(currentTime, progress)
         }
     }, [timer])
 
     //Reset timer after track change
     useEffect(() => {
         setTimer(0);
-        myAudio.current.pause()
-        myAudio.current.play()
     }, [player.trackIndex])
+
+    //Reset timer end of track
+    useEffect(() => {
+        if (player.currentTime > player.duration) {
+            if (player.isLoop === false) {
+                dispatch({ type: 'player/PAUSE'})
+            } 
+            //Reset everything
+            updateProgress(0, 0);
+            setTimer(0);
+        }
+    }, [player.currentTime])
 
 
     // Update artist info
@@ -69,7 +86,7 @@ function Player(props) {
 
     return (
         <div className="c-player">
-            <audio ref={myAudio} onLoadedMetadata={onLoadedMetadata} src={playlist.currentTrack.src} >
+            <audio ref={myAudio} autoPlay onLoadedMetadata={onLoadedMetadata} src={playlist.currentTrack.src}>
             </audio>
             <Controlls></Controlls>
         </div>
