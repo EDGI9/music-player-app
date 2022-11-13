@@ -26,16 +26,19 @@
             max-width: 30px;
         }
     }
-    .c-controlls__shuffle, .c-controlls__loop {
+    .c-controlls__mute, .c-controlls__loop {
         width: 30px;
         height: 30px;
         color: $grey;
     }
-    .c-controlls__shuffle {
+    .c-controlls__mute {
         justify-self: flex-end;
     }
-     .c-controlls__loop {
+    .c-controlls__loop {
         justify-self: flex-start;
+    }
+    .c-controlls__loop--active {
+        color: $black;
     }
 
     .c-controlls__play{ 

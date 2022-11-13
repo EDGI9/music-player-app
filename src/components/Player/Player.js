@@ -1,15 +1,15 @@
 import Controlls from "../../components/Controlls/Controlls.js";
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch  } from 'react-redux'
 import { GET_ARTIST_INFO } from '../../services/artists.js'
 
 function Player(props) {
+    const [timer, setTimer] = useState(0);
     const player = useSelector(state => state.player)
     const playlist = useSelector(state => state.playlist)
     const global = useSelector(state => state.global)
     const dispatch = useDispatch()
     const myAudio = useRef();
-    let timer
   
     //Set duration of track
     const onLoadedMetadata = () => {
@@ -18,34 +18,28 @@ function Player(props) {
         }
     };
 
-    //Reset time and progress
-    const resetTimeAndProgress = () => {
-        dispatch({ type: 'player/UPDATE_CURRENT_TIME', payload: 0})
-        dispatch({ type: 'player/UPDATE_PROGRESS', payload: 0})
-    }
+    //Turning Off update progress and timer
+    /* // Update Timer
+    useEffect(() => {
+        if (player.isPlaying === true) {
+            const interval = setInterval(() => {
+                setTimer((prevTimer) => prevTimer + 1);
+            }, 1000);
+          
+            return () => clearInterval(interval);
+        }
+    }, [player.isPlaying])
 
     // Update Current Time and Progess
     useEffect(() => {
         if (player.isPlaying === true) {
-            timer = setInterval(() => {
-                const currenTime = Math.floor(myAudio.current.currentTime)
-                const progress = Math.floor(( myAudio.current.currentTime / player.duration) * 100)
-                dispatch({ type: 'player/UPDATE_CURRENT_TIME', payload: currenTime})
-                dispatch({ type: 'player/UPDATE_PROGRESS', payload: progress})
-            }, 1000);
-            return () => clearInterval(timer);
-        } 
-    }, [player.isPlaying])
-
-    
-
-    // Update current track
-    useEffect(() => {
-        if (playlist.tracks.length > 0) {
-            dispatch({ type: 'playlist/SET_CURRENT_TRACK', payload: player.trackIndex})
-            resetTimeAndProgress()
+            const currentTime = Math.floor(myAudio.current.currentTime)
+            const progress = Math.floor(( myAudio.current.currentTime / player.duration) * 100)
+            dispatch({ type: 'player/UPDATE_CURRENT_TIME', payload: currentTime})
+            dispatch({ type: 'player/UPDATE_PROGRESS', payload: progress})
         }
-    }, [player.trackIndex])
+    }, [timer]) */
+
 
     // Update artist info
     useEffect(async () => {

@@ -13,16 +13,6 @@ const playerSlice = createSlice({
   name: 'player',
   initialState,
   reducers: {
-    NEXT: state => {
-        state.trackIndex += 1
-        state.isPlaying = false
-    },
-    PREVIOUS: state => {
-        if (state.trackIndex > 0) {
-            state.trackIndex -= 1
-            state.isPlaying = false
-        } 
-    },
     PLAY: state => {
         state.isPlaying = true
     },
@@ -35,6 +25,12 @@ const playerSlice = createSlice({
     UNMUTE: state => {
         state.isMuted = false
     },
+    LOOP: state => {
+        state.isLoop = true
+    },
+    UNLOOP: state => {
+        state.isLoop = false
+    },
     SET_DURATION: (state, action) => {
         state.duration = action.payload
     },
@@ -43,6 +39,9 @@ const playerSlice = createSlice({
     },
     UPDATE_PROGRESS: (state, action) => {
         state.progress = action.payload
+    },
+    UPDATE_TRACK_INDEX: (state, action) => {
+        state.trackIndex = action.payload
     },
   }
 })

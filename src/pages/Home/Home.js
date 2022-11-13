@@ -40,7 +40,6 @@ function Home() {
               <ProgressCircle
                 className="absolute justify-self-center -top-6"  
                 percentage={player.progress}
-                isPlaying={true}
                 size={290}
                 color="#FF0036"
               />
