@@ -1,8 +1,13 @@
 {
   "name": "music-app",
+  "author": {
+    "name": "Edgar Dias",
+    "email": "dias.s.edgar@gmail.com",
+    "url": "https://edgar-dias.eu"
+  },
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://<username>.github.io/<project>/",
+  "homepage": "https://edgi9.github.io/music-player-app/",
   "dependencies": {
     "@heroicons/react": "^2.0.11",
     "@reduxjs/toolkit": "^1.8.1",
