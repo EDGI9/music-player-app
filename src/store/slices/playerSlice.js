@@ -4,6 +4,7 @@ const initialState = {
     trackIndex: 0,
     isPlaying: false,
     isMuted: false,
+    isLoop: false,
     duration: 0,
     currentTime: 0,
     progress: 0,
