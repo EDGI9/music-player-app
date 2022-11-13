@@ -14,15 +14,15 @@ function Player(props) {
     //Set duration of track
     const onLoadedMetadata = () => {
         if (myAudio.current) {
-            dispatch({ type: 'player/SET_DURATION', payload: Math.floor(myAudio.current.duration)})
+            dispatch({ type: 'player/SET_DURATION', payload: Math.floor(myAudio.current.duration)});
         }
     };
 
     //Set duration of track
     const updateProgress = (currentTime, progress) => {
         if (player.isPlaying === true) {
-            dispatch({ type: 'player/UPDATE_CURRENT_TIME', payload: currentTime})
-            dispatch({ type: 'player/UPDATE_PROGRESS', payload: progress})
+            dispatch({ type: 'player/UPDATE_CURRENT_TIME', payload: currentTime});
+            dispatch({ type: 'player/UPDATE_PROGRESS', payload: progress});
         }
     };
 
@@ -40,9 +40,9 @@ function Player(props) {
     // Update timer
     useEffect(() => {
         if (player.isPlaying === true) {
-            const currentTime = Math.floor(timer)
-            const progress = Math.floor(( timer / player.duration) * 100)
-            updateProgress(currentTime, progress)
+            const currentTime = Math.floor(timer);
+            const progress = Math.floor(( timer / player.duration) * 100);
+            updateProgress(currentTime, progress);
         }
     }, [timer])
 
@@ -66,22 +66,22 @@ function Player(props) {
 
     // Update artist info
     useEffect(async () => {
-        const artistInfo = await GET_ARTIST_INFO(global.token, playlist.currentTrack.artistId)
-        dispatch({ type: 'artist/SET_ARTIST_INFO', payload: artistInfo})
+        const artistInfo = await GET_ARTIST_INFO(global.token, playlist.currentTrack.artistId);
+        dispatch({ type: 'artist/SET_ARTIST_INFO', payload: artistInfo});
     }, [playlist.currentTrack.artistId])
 
     // Play/Pause the player
     useEffect(() => {
         if (player.isPlaying === true) {
-            myAudio.current.play()
+            myAudio.current.play();
         } else {
-            myAudio.current.pause()
+            myAudio.current.pause();
         }
     }, [player.isPlaying])
 
     // Mute/Unmute the player
     useEffect(() => {
-        myAudio.current.muted = player.isMuted
+        myAudio.current.muted = player.isMuted;
     }, [player.isMuted])
 
     return (
