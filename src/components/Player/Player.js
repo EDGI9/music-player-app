@@ -18,27 +18,33 @@ function Player(props) {
         }
     };
 
-    //Turning Off update progress and timer
-    /* // Update Timer
+    //Start timer
     useEffect(() => {
         if (player.isPlaying === true) {
             const interval = setInterval(() => {
                 setTimer((prevTimer) => prevTimer + 1);
             }, 1000);
-          
+            
             return () => clearInterval(interval);
         }
     }, [player.isPlaying])
-
-    // Update Current Time and Progess
+    
+    // Update timer
     useEffect(() => {
         if (player.isPlaying === true) {
-            const currentTime = Math.floor(myAudio.current.currentTime)
-            const progress = Math.floor(( myAudio.current.currentTime / player.duration) * 100)
+            const currentTime = Math.floor(timer)
+            const progress = Math.floor(( timer / player.duration) * 100)
             dispatch({ type: 'player/UPDATE_CURRENT_TIME', payload: currentTime})
             dispatch({ type: 'player/UPDATE_PROGRESS', payload: progress})
         }
-    }, [timer]) */
+    }, [timer])
+
+    //Reset timer after track change
+    useEffect(() => {
+        setTimer(0);
+        myAudio.current.pause()
+        myAudio.current.play()
+    }, [player.trackIndex])
 
 
     // Update artist info
