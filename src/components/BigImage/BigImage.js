@@ -1,18 +1,20 @@
 import "./BigImage.scss";
 import Button from "../../components/Button/Button.js";
-import { useDispatch  } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 function BigImage(props) {
+    const global = useSelector(state => state.global)
     const dispatch = useDispatch()
-    const shoSidePanel = async () => {
-        dispatch({ type: 'global/SET_SIDE_PANEL_VISIBILITY', payload: true})
+
+    const showSidePanel = async () => {
+        dispatch({ type: 'global/SET_SIDE_PANEL_VISIBILITY', payload: !global.showSidePanel})
     }
 
     return (
         <div className={"c-big-image " + (props.className ? props.className: "" )}>
             <img className="c-big-image__background" src={props.image}></img>
-            <Button onClick={shoSidePanel} className="c-big-image__button">More</Button>
+            <Button onClick={showSidePanel} className="c-big-image__button">More</Button>
         </div>
     )
 }
