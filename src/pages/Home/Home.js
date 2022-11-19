@@ -30,12 +30,12 @@ function Home() {
     }
     fecthData()
   }, [])
-
+  
   return (
       <main className="relative overflow-hidden h-full">
-        <section className="grid grid-cols-6 gap-4 h-full content-center">
-          <div className="col-start-2 col-span-4 grid grid-rows-3">
-            <div className="flex justify-center content-center relative">
+        <section className="flex justify-center h-full">
+          <div className="flex justify-center flex-col">
+            <div className="flex justify-center content-center relative basis-1/4">
               <BigImage image={playlist.currentTrack.albumImage} className="z-[1]"></BigImage>
               <ProgressCircle
                 className="absolute justify-self-center -top-6"  
@@ -44,11 +44,11 @@ function Home() {
                 color="#FF0036"
               />
             </div>
-            <div className="grid justify-center content-center align-center gap-6">
+            <div className="grid justify-center content-center align-center gap-6 basis-1/4">
               <Title text={playlist.currentTrack.trackName}></Title>
               <SubTitle text={playlist.currentTrack.artistName}></SubTitle>
             </div>
-            <div className="flex items-center justify-center ">
+            <div className="flex items-center justify-center basis-1/4">
               <Player/>
             </div>
           </div>
