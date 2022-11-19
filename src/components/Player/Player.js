@@ -65,9 +65,12 @@ function Player(props) {
 
 
     // Update artist info
-    useEffect(async () => {
+    useEffect(() => {
+        const fecthData = async () => {
         const artistInfo = await GET_ARTIST_INFO(global.token, playlist.currentTrack.artistId)
         dispatch({ type: 'artist/SET_ARTIST_INFO', payload: artistInfo})
+        }
+        fecthData();
     }, [playlist.currentTrack.artistId])
 
     // Play/Pause the player

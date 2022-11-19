@@ -2,7 +2,7 @@ import "./Controlls.scss";
 import Button from "../../components/Button/Button.js";
 import { useEffect } from 'react';
 import { useSelector, useDispatch  } from 'react-redux'
-import { PlayIcon, PauseIcon, ChevronDoubleRightIcon, ChevronDoubleLeftIcon, ArrowPathRoundedSquareIcon, ArrowsRightLeftIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
+import { PlayIcon, PauseIcon, ChevronDoubleRightIcon, ChevronDoubleLeftIcon, ArrowPathRoundedSquareIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
 
 function Controlls(props) {
     const player = useSelector(state => state.player)
@@ -81,7 +81,7 @@ function Controlls(props) {
 
     // Loop playlist
     useEffect(() => {
-        const endOfPlaylist = player.trackIndex == playlist.tracks.length
+        const endOfPlaylist = player.trackIndex === playlist.tracks.length
         if (player.isLoop && player.progress >= 100) {
             if (endOfPlaylist) {
                 previousTrack();

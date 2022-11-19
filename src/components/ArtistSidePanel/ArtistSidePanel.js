@@ -17,7 +17,7 @@ function ArtistSidePanel(props) {
             <Button onClick={hideSidePanel} className="absolute ml-5 mt-5 rounded-full p-2"><ChevronRightIcon className="h-5 w-5"/></Button>
             <div className="overflow-y-scroll h-full">
                 <div className="h-30 max-h-80 overflow-hidden">
-                    <img className="c-artist-side-panel__image" src={props.artistInfo.image}></img>
+                    <img className="c-artist-side-panel__image" src={props.artistInfo.image} alt={props.artistInfo.name}></img>
                 </div>
                 <div className="h-70 p-5 ">
                     <h1 className="mb-5 font-bold text-2xl">{props.artistInfo.name}</h1>
