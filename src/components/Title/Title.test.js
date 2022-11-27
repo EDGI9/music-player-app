@@ -1,4 +1,4 @@
-import { render , screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Title from './Title';
 
 describe('Title component', () => {
@@ -10,6 +10,6 @@ describe('Title component', () => {
 
     test('Renders Title component content', () => {
         const {getByText} = render(<Title text={text} />)
-        expect(getByText('My title')).toBeInTheDocument()
+        expect(getByText(text)).toBeInTheDocument()
     });
 });
