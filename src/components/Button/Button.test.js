@@ -1,26 +1,31 @@
-import { render , screen } from '@testing-library/react';
+import { render , fireEvent } from '@testing-library/react';
 import Button from './Button';
 
 describe('Button component', () => {
-
-    //Test if it renders
-    //Test if it contains the correct class
-    //Test if we can pass class list
-    //Tes if it renders the correct content
-    //Test Button click
-    const text = 'My Button'
+    const text = 'My Button';
+    const testClass = 'test-class';
+    const componentClass = 'c-button';
     test('Renders Button component', () => {
         render(<Button />);
     });
 
     test('Check if it has the correct CSS class', () => {
         const {asFragment} = render(<Button />)
-        expect(asFragment().firstElementChild).toHaveClass('c-button')
+        expect(asFragment().firstElementChild).toHaveClass(componentClass)
     });
 
     test('Renders Button component content', () => {
         const {asFragment} = render(<Button>{text}</Button>)
-        //Need fixing
-        expect(asFragment().firstElementChild.firstChild).toBe('My Button')
+        expect(asFragment().firstElementChild.firstChild.textContent).toEqual(text)
+    });
+
+    test('Can pass CSS class to component', () => {
+        const {asFragment} = render(<Button className={testClass}>{text}</Button>)
+        expect(asFragment().firstElementChild).toHaveClass(testClass)
+    });
+
+    test('Button click works', () => {
+        const {asFragment} = render(<Button>{text}</Button>)
+        fireEvent.click(asFragment().firstElementChild)
     });
 });
