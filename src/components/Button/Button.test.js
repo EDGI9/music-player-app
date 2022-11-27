@@ -1,4 +1,4 @@
-import { render , fireEvent } from '@testing-library/react';
+import { render , screen, fireEvent } from '@testing-library/react';
 import Button from './Button';
 
 describe('Button component', () => {
@@ -10,22 +10,23 @@ describe('Button component', () => {
     });
 
     test('Check if it has the correct CSS class', () => {
-        const {asFragment} = render(<Button />)
-        expect(asFragment().firstElementChild).toHaveClass(componentClass)
+        render(<Button />)
+        expect(screen.getByTestId('button')).toHaveClass(componentClass)
+
     });
 
     test('Renders Button component content', () => {
-        const {asFragment} = render(<Button>{text}</Button>)
-        expect(asFragment().firstElementChild.firstChild.textContent).toEqual(text)
+        render(<Button>{text}</Button>)
+        expect(screen.getByTestId('button').firstChild.textContent).toEqual(text)
     });
 
     test('Can pass CSS class to component', () => {
-        const {asFragment} = render(<Button className={testClass}>{text}</Button>)
-        expect(asFragment().firstElementChild).toHaveClass(testClass)
+        render(<Button className={testClass}>{text}</Button>)
+        expect(screen.getByTestId('button')).toHaveClass(testClass)
     });
 
     test('Button click works', () => {
-        const {asFragment} = render(<Button>{text}</Button>)
-        fireEvent.click(asFragment().firstElementChild)
+        render(<Button>{text}</Button>)
+        fireEvent.click(screen.getByTestId('button'))
     });
 });

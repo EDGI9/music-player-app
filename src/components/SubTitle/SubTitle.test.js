@@ -1,4 +1,4 @@
-import { render , screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import SubTitle from './SubTitle';
 
 
@@ -10,6 +10,6 @@ describe('SubTitle component', () => {
 
     test('Renders SubTitle component content', () => {
         const {getByText} = render(<SubTitle text={text}/>)
-        expect(getByText('My Subtitle')).toBeInTheDocument()
+        expect(getByText(text)).toBeInTheDocument()
     });
 });
