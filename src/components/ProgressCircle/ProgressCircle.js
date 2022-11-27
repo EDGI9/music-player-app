@@ -23,7 +23,7 @@ const Circle = ({ color, percentage, size, strokeWidth, className }) => {
 
 function ProgressCircle(props) {
   return (
-    <div className={"c-progress-circle " + (props.className ? props.className : "")}>
+    <div data-testid="progress-circle" className={"c-progress-circle " + (props.className ? props.className : "")}>
       <svg width={props.size} height={props.size}>
         <g>
           <Circle strokeWidth={"0.4rem"} color="#dbdada" size={props.size} />
