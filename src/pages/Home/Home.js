@@ -55,6 +55,9 @@ function Home() {
         </section>
         <ArtistSidePanel show={global.showSidePanel} artistInfo={artist.data}/>
         <WaveAnimation/>
+        <footer className='absolute bottom-4 flex justify-center w-full'>
+          <span className='text-gray-500'>&copy; Edgar Dias - 2022</span>
+        </footer>
       </main>
   );
 }
